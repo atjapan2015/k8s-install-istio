@@ -14,7 +14,7 @@ Init istio
 ```
 istioctl operator init
 kubectl get po -n istio-operator
-istioctl manifest apply -f istio-operator.yamml
+istioctl install --set profile=default
 kubectl get svc,po -n istio-system
 ```
 
@@ -35,6 +35,7 @@ kubectl create -f samples/addons/jaeger.yaml
 
 Integrate external prometheus and grafana
 ```
+kubectl apply -n monitoring -f istio-metrics-aggregation.yaml
 kubectl apply -n monitoring -f istio-prometheus.yaml
 https://istio.io/latest/docs/ops/integrations/grafana/
 ```
